@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 project(LearnOpenGL LANGUAGES CXX)
 
-set(GLFW_ROOT ${CMAKE_SOURCE_DIR}/../glfw-3.4.bin.MACOS)
+set(GLFW_ROOT ${CMAKE_SOURCE_DIR}/glfw-3.4)
 set(GLAD_ROOT ${CMAKE_SOURCE_DIR}/glad)
 
 add_executable(LearnOpenGL main.cpp)
