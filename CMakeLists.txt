@@ -4,7 +4,7 @@ project(LearnOpenGL LANGUAGES C CXX)
 set(GLFW_ROOT ${CMAKE_SOURCE_DIR}/glfw-3.4)
 set(GLAD_ROOT ${CMAKE_SOURCE_DIR}/glad)
 
-add_executable(LearnOpenGL main.cpp ${GLAD_ROOT}/src/glad.c)
+add_executable(LearnOpenGL main.cpp ${GLAD_ROOT}/src/glad.c shader.h)
 
 target_include_directories(LearnOpenGL PRIVATE 
     ${GLFW_ROOT}/include
