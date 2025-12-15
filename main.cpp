@@ -96,28 +96,22 @@ int main() {
     glDeleteShader(fragmentShader);
 
     float vertices[] = {
-        0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
-    };
+        -0.5f, 0.5f, 0.0f, // left, top
+        -1.0f, -0.5f, 0.0f, // left, left bottom
+        0.0f, -0.5f, 0.0f, // left, right bottom
 
-    unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
+        0.5f, 0.5f, 0.0f, // right, top
+        0.0f, -0.5f, 0.0f,// right, left bottom
+        1.0f, -0.5f, 0.0f // right, right bottom
     };
 
     unsigned int VBO;
     glGenBuffers(1, &VBO);
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
-    unsigned int EBO; // Element Buffer Object
-    glGenBuffers(1, &EBO);
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
@@ -130,7 +124,7 @@ int main() {
 
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
 
         glfwSwapBuffers(window);
