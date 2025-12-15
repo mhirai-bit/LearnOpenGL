@@ -74,6 +74,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         shaderProgram.use();
+        shaderProgram.setFloat("horizontalOffset", 0.5f);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glBindVertexArray(0);
